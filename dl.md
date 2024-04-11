@@ -16,6 +16,18 @@
 ![](https://raw.githubusercontent.com/vamossaka/mypic/main/note1%20pic3.jpg)
 e描述预测y与训练集中真实y的差距，定义方式一般有两种，MAE和MSE。
 
+**交叉熵作为loss的两种情况**
+- 单分类问题：样本中仅有一个位置是正标签（1），其余位置全为负标签（0），因此是输出结果是一个多项分布，公式为
+![](https://raw.githubusercontent.com/vamossaka/mypic/main/微信图片_20240411093521.jpg)
+> 我们仅考虑让输出结果中，对应正标签位置的预测结果不断逼近1即可，其他输出我们不管（因为无意义）
+
+- 多分类问题：样本中不止一个位置是正标签，代表着需要有多个对象等待被分类，所以多分类问题可看作多个二项分布
+对于单个对象，公式为
+![](https://raw.githubusercontent.com/vamossaka/mypic/main/微信图片_20240411093533.jpg)
+> 这里考虑到每个位置上可能出现1，也可能出现0。1的情况就要该位置的输出逼近1，0的情况就要该位置的输出逼近0，所以式子考虑了两种情况
+
+整体看，为
+![](https://raw.githubusercontent.com/vamossaka/mypic/main/微信图片_20240411093540.jpg)
 ### optimization过程
 > optimization就是通过对模型参数进行不断修正的，使loss的值越来越小
 
